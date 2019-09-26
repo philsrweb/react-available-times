@@ -66,10 +66,6 @@ class Test extends Component {
     this.setState({ selections });
   }
 
-  handleDelete(deletedItem) {
-    console.log('Deleting this: ', deletedItem);
-  }
-
   // eslint-disable-next-line class-methods-use-this
   handleEventsRequested({ start: s, end: e, calendarId, callback }) {
     // eslint-disable-next-line no-console
@@ -157,7 +153,6 @@ class Test extends Component {
               weekStartsOn="monday"
               start={new Date()}
               onChange={this.handleChange}
-              onDelete={this.handleDelete}
               initialSelections={initialSelections}
               onEventsRequested={this.handleEventsRequested}
               recurring={recurring}

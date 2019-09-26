@@ -350,5 +350,6 @@ Day.propTypes = {
     offset: PropTypes.number,
   })),
   onChange: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
   touchToDeleteSelection: PropTypes.bool,
 };

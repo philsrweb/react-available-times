@@ -352,6 +352,7 @@ AvailableTimes.propTypes = {
   })),
   weekStartsOn: PropTypes.oneOf(['sunday', 'monday']),
   onChange: PropTypes.func,
+  onDelete: PropTypes.func,
   onEventsRequested: PropTypes.func,
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

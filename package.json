@@ -1,9 +1,12 @@
 {
-  "name": "react-available-times",
+  "name": "@websketch/react-available-times-ondelete",
   "version": "1.2.2",
   "description": "A calendar to pick available time slots",
   "main": "dist/main.js",
-  "repository": "git@github.com:trotzig/react-available-times.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/trotzig/react-available-times.git"
+  },
   "author": "Henric Trotzig <henric.trotzig@gmail.com>",
   "license": "MIT",
   "files": [
@@ -63,5 +66,12 @@
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0, || ^16.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/trotzig/react-available-times/issues"
+  },
+  "homepage": "https://github.com/trotzig/react-available-times#readme",
+  "directories": {
+    "test": "test"
   }
 }

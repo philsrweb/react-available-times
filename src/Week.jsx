@@ -86,6 +86,11 @@ export default class Week extends PureComponent {
     window.removeEventListener('resize', this.setDaysWidth);
   }
 
+  onDelete(selection) {
+    const { onDelete } = this.props;
+    onDelete(selection);
+  }
+
   handleDaysRef(element) {
     if (!element) {
       return;
@@ -106,11 +111,6 @@ export default class Week extends PureComponent {
       onChange(this.props.week, flattened);
       return { daySelections };
     });
-  }
-
-  onDelete(selection) {
-    const { onDelete } = this.props;
-    onDelete(selection);
   }
 
   // generate the props required for Day to block specific hours.
@@ -244,6 +244,7 @@ Week.propTypes = {
     end: PropTypes.instanceOf(Date),
   })),
   onChange: PropTypes.func,
+  onDelete: PropTypes.func,
   // eslint-disable-next-line react/forbid-prop-types
   week: PropTypes.object.isRequired,
   recurring: PropTypes.bool,
