@@ -72,6 +72,7 @@ export default class AvailableTimes extends PureComponent {
       this.selections[week.start] = existing;
     });
     this.handleWeekChange = this.handleWeekChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.moveBack = this.move.bind(this, -1);
     this.moveForward = this.move.bind(this, 1);
     this.move = this.move.bind(this);
@@ -159,6 +160,13 @@ export default class AvailableTimes extends PureComponent {
     this.setState({
       selections: newSelections,
     });
+  }
+
+  handleDelete(deleteTarget) {
+    const { onDelete } = this.props;
+    if (onDelete) {
+      onDelete(deleteTarget);
+    }
   }
 
   handleCalendarChange(selectedCalendars) {
@@ -300,6 +308,7 @@ export default class AvailableTimes extends PureComponent {
                     events={recurring ? [] : events}
                     initialSelections={selections}
                     onChange={this.handleWeekChange}
+                    onDelete={this.handleDelete}
                     height={height}
                     recurring={recurring}
                     touchToDeleteSelection={touchToDeleteSelection}

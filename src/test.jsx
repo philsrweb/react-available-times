@@ -58,11 +58,16 @@ class Test extends Component {
       selections: initialSelections,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.handleEventsRequested = this.handleEventsRequested.bind(this);
   }
 
   handleChange(selections) {
     this.setState({ selections });
+  }
+
+  handleDelete(deletedItem) {
+    console.log('Deleting this: ', deletedItem);
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -152,6 +157,7 @@ class Test extends Component {
               weekStartsOn="monday"
               start={new Date()}
               onChange={this.handleChange}
+              onDelete={this.handleDelete}
               initialSelections={initialSelections}
               onEventsRequested={this.handleEventsRequested}
               recurring={recurring}

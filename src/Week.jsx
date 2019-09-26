@@ -57,6 +57,7 @@ export default class Week extends PureComponent {
       daySelections: weekEvents(week, initialSelections, timeZone),
     };
     this.handleDayChange = this.handleDayChange.bind(this);
+    this.onDelete = this.onDelete.bind(this);
     this.handleDaysRef = this.handleDaysRef.bind(this);
     this.setDaysWidth = () => this.setState({
       daysWidth: this.daysRef.offsetWidth,
@@ -105,6 +106,11 @@ export default class Week extends PureComponent {
       onChange(this.props.week, flattened);
       return { daySelections };
     });
+  }
+
+  onDelete(selection) {
+    const { onDelete } = this.props;
+    onDelete(selection);
   }
 
   // generate the props required for Day to block specific hours.
@@ -207,6 +213,7 @@ export default class Week extends PureComponent {
                 date={day.date}
                 events={dayEvents[i]}
                 initialSelections={daySelections[i]}
+                onDelete={this.onDelete}
                 onChange={this.handleDayChange}
                 hourLimits={this.generateHourLimits()}
                 touchToDeleteSelection={touchToDeleteSelection}

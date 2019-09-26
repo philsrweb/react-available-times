@@ -57,11 +57,12 @@ export default class Day extends PureComponent {
 
 
   handleDelete({ start, end }) {
-    const { onChange, index } = this.props;
+    const { onChange, onDelete, index } = this.props;
 
     this.setState(({ selections }) => {
       for (let i = 0; i < selections.length; i++) {
         if (selections[i].start === start && selections[i].end === end) {
+          onDelete(selections[i]);
           selections.splice(i, 1);
           onChange(index, selections);
           return { selections: selections.slice(0) };
@@ -351,4 +352,3 @@ Day.propTypes = {
   onChange: PropTypes.func.isRequired,
   touchToDeleteSelection: PropTypes.bool,
 };
-
