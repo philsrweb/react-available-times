@@ -1,7 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
 import moment from 'moment';
-import momentTimezone from 'moment-timezone';
 
 import AvailableTimes from '../src/AvailableTimes';
 import CalendarSelector from '../src/CalendarSelector';
@@ -95,27 +94,6 @@ it('uses 12h time convention when timeConvention=12h', () => {
   );
   expect(component.find(Ruler).first().text()).toMatch(/12pm.*1pm.*2pm/);
   expect(component.text()).toMatch(/1:00pm-2:00pm/);
-});
-
-it('can display in a different timeZone', () => {
-  // Create a date in CET, so that we can compare the output and make sure it's
-  // in a different time zone.
-  const start = momentTimezone.tz(new Date(), 'Europe/Stockholm');
-  const component = mount(
-    <AvailableTimes
-      timeZone="Pacific/Samoa"
-      initialSelections={[
-        {
-          start: start.hour(13).minutes(0).seconds(0).toDate(),
-          end: start.add(1, 'hour').toDate(),
-        },
-      ]}
-    />,
-  );
-
-  expect(component.text()).toMatch(/1:00-2:00/);
-  // Make sure that sunday is the first day
-  expect(component.find(DayHeader).first().text()).toMatch(/Sun/);
 });
 
 it('can be in recurring mode', () => {
